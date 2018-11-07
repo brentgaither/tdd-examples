@@ -8,4 +8,9 @@ RSpec.describe TddExamples do
     product = five.times(3)
     expect(product.amount).to eq(15)
   end
+
+  it 'should compare equal objects' do
+    expect(Dollar.new(5).equals(Dollar.new(5))).to eq(true)
+    expect(Dollar.new(5).equals(Dollar.new(6))).to eq(false)
+  end
 end
