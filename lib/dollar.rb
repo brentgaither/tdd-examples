@@ -1,6 +1,6 @@
-class Dollar
+require 'money'
 
-  attr_reader :amount #This is not private like it could be with a railsy attr_protected
+class Dollar < Money
 
   def initialize (amount)
     @amount = amount
@@ -10,7 +10,4 @@ class Dollar
     Dollar.new(@amount * multiplier)
   end
 
-  def ==(object)
-    @amount == object.amount
-  end
 end

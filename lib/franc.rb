@@ -1,6 +1,6 @@
-class Franc
+require 'money'
 
-  attr_reader :amount
+class Franc < Money
 
   def initialize (amount)
     @amount = amount
@@ -10,7 +10,4 @@ class Franc
     Franc.new(@amount * multiplier)
   end
 
-  def ==(object)
-    @amount == object.amount
-  end
 end
