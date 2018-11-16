@@ -1,4 +1,5 @@
 require 'money'
+require 'bank'
 
 RSpec.describe TddExamples do
   it "should not allow different types of money to equal each other" do
@@ -33,8 +34,10 @@ RSpec.describe TddExamples do
 
   context 'addition' do
     it 'should add money' do
-      sum = Money.dollar(5).plus(Money.dollar(5))
-      expect(Money.dollar(10)).to eq(sum)
+      five = Money.dollar(5)
+      sum = five.plus(Money.dollar(5))
+      reduced = Bank.new.reduce(sum, "USD")
+      expect(Money.dollar(10)).to eq(reduced)
     end
   end
 end
