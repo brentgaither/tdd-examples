@@ -2,13 +2,17 @@ require 'franc'
 
 RSpec.describe TddExamples do
   it "multiples franc amounts" do
-    five = Franc.new(5)
-    expect(Franc.new(10)).to eq(five.times(2))
-    expect(Franc.new(15)).to eq(five.times(3))
+    five = Money.franc(5)
+    expect(Money.franc(10)).to eq(five.times(2))
+    expect(Money.franc(15)).to eq(five.times(3))
   end
 
   it 'should compare equal objects' do
-    expect(Franc.new(5)==(Franc.new(5))).to be true
-    expect(Franc.new(5)==(Franc.new(6))).to be false
+    expect(Money.franc(5)==(Money.franc(5))).to be true
+    expect(Money.franc(5)==(Money.franc(6))).to be false
+  end
+
+  it 'should have a currency' do
+    expect(Money.franc(1).currency).to eq("CHF")
   end
 end

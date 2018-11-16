@@ -1,16 +1,27 @@
 class Money
 
-  attr_reader :amount #This is not protected like it could be with a railsy attr_protected
+  attr_reader :amount, :currency
+
+  def initialize (amount, currency)
+    @amount = amount
+    @currency = currency
+  end
 
   def ==(object)
     @amount == object.amount && self.class == object.class
   end
 
   def self.dollar(amount)
-    Dollar.new(amount)
+    @currency = "USD"
+    Dollar.new(amount, currency)
   end
 
   def self.franc(amount)
-    Franc.new(amount)
+    @currency = "CHF"
+    Franc.new(amount, currency)
+  end
+
+  def self.currency
+    return @currency
   end
 end
