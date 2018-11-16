@@ -35,4 +35,9 @@ class Money < Expression
   def self.currency
     return @currency
   end
+
+  def reduce(bank, to)
+    rate = bank.rate(currency, to)
+    Money.new(amount / rate, to)
+  end
 end

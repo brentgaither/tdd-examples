@@ -8,5 +8,12 @@ RSpec.describe Bank do
       result = Bank.new.reduce(sum, "USD")
       expect(Money.dollar(7)).to eq result
     end
+
+    it 'should reduce different currencies' do
+      bank = Bank.new
+      bank.add_rate("CHF", "USD", 2)
+      result = bank.reduce(Money.franc(2), "USD")
+      expect(result).to eq(Money.dollar(1))
+    end
   end
 end
