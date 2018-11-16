@@ -6,9 +6,6 @@ class Dollar < Money
     super(amount, currency)
   end
 
-  def times(multiplier)
-    Money.dollar(@amount * multiplier)
-  end
 
   def currency
     "USD"

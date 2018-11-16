@@ -6,10 +6,6 @@ class Franc < Money
     super(amount, currency)
   end
 
-  def times(multiplier)
-    Money.franc(@amount * multiplier)
-  end
-
   def currency
     "CHF"
   end
