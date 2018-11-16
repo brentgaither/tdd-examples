@@ -1,4 +1,5 @@
 require 'expression'
+require 'sum'
 
 class Money < Expression
 
@@ -15,6 +16,10 @@ class Money < Expression
 
   def times(multiplier)
     Money.new(@amount * multiplier, currency)
+  end
+
+  def plus(addend)
+    Sum.new(self, addend)
   end
 
   def self.dollar(amount)

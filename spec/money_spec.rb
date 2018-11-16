@@ -39,5 +39,12 @@ RSpec.describe TddExamples do
       reduced = Bank.new.reduce(sum, "USD")
       expect(Money.dollar(10)).to eq(reduced)
     end
+
+    it 'should return a sum' do
+      five = Money.dollar(5)
+      result = five.plus(five)
+      expect(result.augend).to eq five
+      expect(result.addend).to eq five
+    end
   end
 end
