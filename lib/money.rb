@@ -17,12 +17,12 @@ class Money
 
   def self.dollar(amount)
     @currency = "USD"
-    Dollar.new(amount, currency)
+    Money.new(amount, currency)
   end
 
   def self.franc(amount)
     @currency = "CHF"
-    Franc.new(amount, currency)
+    Money.new(amount, currency)
   end
 
   def self.currency

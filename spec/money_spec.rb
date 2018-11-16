@@ -1,5 +1,4 @@
 require 'money'
-require 'franc'
 
 RSpec.describe TddExamples do
   it "should not allow different types of money to equal each other" do
@@ -12,11 +11,23 @@ RSpec.describe TddExamples do
       expect(Money.dollar(10)==five.times(2)).to be true
       expect(Money.dollar(15)==five.times(3)).to be true
     end
+  end
 
-    it "should work for francs" do
-      five = Money.franc(5)
-      expect(Money.franc(10)==five.times(2)).to be true
-      expect(Money.franc(15)==five.times(3)).to be true
-    end
+  it 'should compare equal objects' do
+    expect(Money.franc(5)==(Money.franc(5))).to be true
+    expect(Money.franc(5)==(Money.franc(6))).to be false
+  end
+
+  it 'should have a currency' do
+    expect(Money.franc(1).currency).to eq("CHF")
+  end
+
+  it 'should compare equal objects' do
+    expect(Money.dollar(5)==(Money.dollar(5))).to be true
+    expect(Money.dollar(5)==(Money.dollar(6))).to be false
+  end
+
+  it 'should have a currency' do
+    expect(Money.dollar(1).currency).to eq("USD")
   end
 end
