@@ -15,6 +15,10 @@ class Money
     Money.new(@amount * multiplier, currency)
   end
 
+  def plus(addend)
+    Money.new(amount + addend.amount, currency)
+  end
+
   def self.dollar(amount)
     @currency = "USD"
     Money.new(amount, currency)

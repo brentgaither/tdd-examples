@@ -5,7 +5,7 @@ RSpec.describe TddExamples do
     expect(Money.dollar(10)==Money.franc(10)).to be false
   end
 
-  context "should multiply" do
+  context "multiply" do
     it "should work for dollars" do
       five = Money.dollar(5)
       expect(Money.dollar(10)==five.times(2)).to be true
@@ -29,5 +29,12 @@ RSpec.describe TddExamples do
 
   it 'should have a currency' do
     expect(Money.dollar(1).currency).to eq("USD")
+  end
+
+  context 'addition' do
+    it 'should add money' do
+      sum = Money.dollar(5).plus(Money.dollar(5))
+      expect(Money.dollar(10)).to eq(sum)
+    end
   end
 end
