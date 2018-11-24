@@ -47,4 +47,15 @@ RSpec.describe TddExamples do
       expect(result.addend).to eq five
     end
   end
+
+  context 'conversions' do
+    it 'should add mixed currencies' do
+      five_bucks = Money.dollar(5)
+      ten_francs = Money.franc(10)
+      bank = Bank.new
+      bank.add_rate("CHF", "USD", 2)
+      result = bank.reduce(five_bucks.plus(ten_francs), "USD")
+      expect(result == Money.dollar(10)).to be true
+    end
+  end
 end

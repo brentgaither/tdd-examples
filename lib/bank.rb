@@ -1,6 +1,5 @@
 class Bank
 
-
   def initialize
     @rates = Hash.new
   end
@@ -10,7 +9,8 @@ class Bank
   end
 
   def rate(from, to)
-    return from.equal?("CHF") && to.equal?("USD") ? 1 : 2
+    return 1 if(from == to)
+    @rates[(from + to).to_sym]
   end
 
   def rates
