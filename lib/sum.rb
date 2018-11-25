@@ -19,7 +19,11 @@ class Sum < Expression
   end
 
   def plus(addend)
-    nil
+    Sum.new(self, addend)
+  end
+
+  def times(multiplier)
+    Sum.new(augend.times(multiplier), addend.times(multiplier))
   end
 
 end
