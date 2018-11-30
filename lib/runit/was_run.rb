@@ -6,14 +6,16 @@ class TestCase
   end
 
   def run
+    self.set_up
     method = self.name
     self.send(method)
   end
+
 end
 
 class WasRun < TestCase
 
-  attr_accessor :was_run
+  attr_accessor :was_run, :was_set_up
 
   def initialize name
     self.was_run = nil
@@ -23,6 +25,11 @@ class WasRun < TestCase
   def test_method()
     self.was_run = 1
   end
+
+  def set_up
+    self.was_run = nil
+    self.was_set_up = 1
+  end
 end
 
 
@@ -31,12 +38,22 @@ def assert &block
 end
 
 class TestCaseTest < TestCase
+
+  attr_accessor :test
+  def set_up
+    self.test = WasRun.new "test_method"
+  end
+
   def test_running
-    test = WasRun.new "test_method"
-    assert {!test.was_run}
-    test.run
+    self.test.run
     assert {test.was_run}
+  end
+
+  def test_set_up
+    self.test.run
+    assert {test.was_set_up}
   end
 end
 
 TestCaseTest.new("test_running").run
+TestCaseTest.new("test_set_up").run
