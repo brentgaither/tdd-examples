@@ -1,4 +1,4 @@
-require 'expression'
+require 'money_example/expression'
 class Sum < Expression
 
   def initialize(augend, addend)

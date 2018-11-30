@@ -1,5 +1,5 @@
-require 'money'
-require 'bank'
+require 'money_example/money'
+require 'money_example/bank'
 
 RSpec.describe TddExamples do
   it "should not allow different types of money to equal each other" do

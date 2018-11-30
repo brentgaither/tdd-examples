@@ -1,5 +1,5 @@
-require 'money'
-require 'bank'
+require 'money_example/money'
+require 'money_example/bank'
 
 RSpec.describe Bank do
   context 'reduce' do

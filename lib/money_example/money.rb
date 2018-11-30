@@ -1,5 +1,5 @@
-require 'expression'
-require 'sum'
+require 'money_example/expression'
+require 'money_example/sum'
 
 class Money < Expression
 
