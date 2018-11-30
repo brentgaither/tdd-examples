@@ -16,6 +16,3 @@ test = WasRun.new "testMethod"
 p test.was_run
 test.test_method
 p test.was_run
-
-
-
