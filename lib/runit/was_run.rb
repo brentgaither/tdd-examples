@@ -9,26 +9,36 @@ class TestCase
     self.set_up
     method = self.name
     self.send(method)
+    self.tear_down
+  end
+
+  def tear_down
+
   end
 
 end
 
 class WasRun < TestCase
 
-  attr_accessor :was_run, :was_set_up
+  attr_accessor :was_run, :log
 
   def initialize name
     self.was_run = nil
     super name
   end
 
-  def test_method()
-    self.was_run = 1
-  end
-
   def set_up
     self.was_run = nil
-    self.was_set_up = 1
+    self.log = "set_up "
+  end
+
+  def test_method
+    self.was_run = 1
+    self.log = self.log + "test_method "
+  end
+
+  def tear_down
+    self.log = self.log + "tear_down "
   end
 end
 
@@ -40,20 +50,15 @@ end
 class TestCaseTest < TestCase
 
   attr_accessor :test
+
   def set_up
     self.test = WasRun.new "test_method"
   end
 
-  def test_running
+  def test_template_method
     self.test.run
-    assert {test.was_run}
-  end
-
-  def test_set_up
-    self.test.run
-    assert {test.was_set_up}
+    assert {self.test.log == "set_up test_method tear_down "}
   end
 end
 
-TestCaseTest.new("test_running").run
-TestCaseTest.new("test_set_up").run
+TestCaseTest.new("test_template_method").run
