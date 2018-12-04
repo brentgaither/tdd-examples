@@ -23,17 +23,14 @@ class WasRun < TestCase
   attr_accessor :was_run, :log
 
   def initialize name
-    self.was_run = nil
     super name
   end
 
   def set_up
-    self.was_run = nil
     self.log = "set_up "
   end
 
   def test_method
-    self.was_run = 1
     self.log = self.log + "test_method "
   end
 
